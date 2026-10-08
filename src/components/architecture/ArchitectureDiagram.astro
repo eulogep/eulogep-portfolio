@@ -1,0 +1,119 @@
+---
+import { layoutDiagram, MAX_DIAGRAM_WIDTH } from '../../lib/architecture/geometry';
+import { nodeTag } from '../../lib/architecture/labels';
+import type { ArchitectureSpec } from '../../lib/architecture/types';
+
+import ArchitectureArrow from './ArchitectureArrow.astro';
+import ArchitectureLegend from './ArchitectureLegend.astro';
+import ArchitectureNode from './ArchitectureNode.astro';
+
+interface Props {
+  spec: ArchitectureSpec;
+  repositoryUrl?: string;
+}
+
+const { spec, repositoryUrl } = Astro.props;
+const layout = layoutDiagram(spec);
+// Large screens never enlarge a diagram past ~1120px (owner decision): the width attribute is the
+// natural size and CSS max-width still lets it shrink inside narrower containers.
+const naturalWidth = Math.min(MAX_DIAGRAM_WIDTH, Math.round(layout.width * 1.2));
+const id = `arch-${spec.projectId}`;
+const nodesById = new Map(spec.nodes.map((node) => [node.id, node]));
+const inspected = new Date(`${spec.inspectedAt}T00:00:00Z`).toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+const edgeKinds = ['flow', 'fallback', 'refusal'] as const;
+---
+
+<figure class="arch-figure" data-architecture={spec.projectId}>
+  <figcaption class="visually-hidden">{spec.title}</figcaption>
+
+  <div class="arch-figure__desktop">
+    <svg
+      class="arch-svg"
+      viewBox={`0 0 ${layout.width} ${layout.height}`}
+      width={naturalWidth}
+      role="img"
+      aria-labelledby={`${id}-title ${id}-desc`}
+      focusable="false"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title id={`${id}-title`}>{spec.title}</title>
+      <desc id={`${id}-desc`}>{spec.summary}</desc>
+      <defs>
+        {edgeKinds.map((kind) => (
+          <marker id={`${id}-arrow-${kind}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path class={`arch-arrowhead arch-arrowhead--${kind}`} d="M0 0L10 5L0 10z" />
+          </marker>
+        ))}
+      </defs>
+
+      {layout.groups.map((group) => (
+        <g class:list={['arch-group', { 'arch-group--boundary': group.variant === 'boundary' }]} data-group-id={group.id}>
+          <rect class="arch-group__box" x={group.x} y={group.y} width={group.width} height={group.height} rx="14" />
+          <text
+            class="arch-group__title"
+            x={group.titleAlign === 'center' ? group.x + group.width / 2 : group.titleAlign === 'end' ? group.x + group.width - 14 : group.x + 14}
+            y={group.y + 19}
+            text-anchor={group.titleAlign === 'center' ? 'middle' : group.titleAlign === 'end' ? 'end' : 'start'}
+          >{group.title}</text>
+        </g>
+      ))}
+      {layout.edges.map((edge) => <ArchitectureArrow edge={edge} markerPrefix={id} />)}
+      {layout.nodes.map((node) => <ArchitectureNode node={node} />)}
+    </svg>
+  </div>
+
+  <ol class="arch-stages" aria-label="Flux, étape par étape">
+    {spec.stages.map((stage) => (
+      <li class="arch-stage">
+        <p class="arch-stage__title">{stage.title}</p>
+        <ol class:list={['arch-stage__nodes', { 'arch-stage__nodes--fallback': stage.sequence === 'fallback' }]}>
+          {stage.nodeIds.map((nodeId, index) => {
+            const node = nodesById.get(nodeId)!;
+            return (
+              <li class={`arch-item arch-item--${node.kind}`}>
+                {stage.sequence === 'fallback' && (
+                  <span class="arch-item__order">{index === 0 ? 'Premier essai' : `Repli ${index}`}</span>
+                )}
+                <span class="arch-item__tag">{nodeTag(node)}{node.evidence === 'CORROBORATED' ? ' · PARTIEL' : ''}</span>
+                <strong class="arch-item__title">{node.title}</strong>
+                <span class="arch-item__text">{node.lines.join(' ')}</span>
+                {node.note && <span class="arch-item__text">{node.note}</span>}
+              </li>
+            );
+          })}
+        </ol>
+      </li>
+    ))}
+  </ol>
+
+  <ArchitectureLegend spec={spec} />
+
+  <details class="arch-textalt">
+    <summary>Lire ce schéma en texte</summary>
+    <ol>
+      {spec.narrative.map((sentence) => <li>{sentence}</li>)}
+    </ol>
+  </details>
+
+  <div class="arch-evidence">
+    <p>
+      Schéma établi à partir du code public du dépôt, inspecté le {inspected}. Seules les relations observées dans le code
+      sont représentées.
+    </p>
+    <ul>
+      {spec.limits.map((limit) => <li>{limit}</li>)}
+    </ul>
+    <details>
+      <summary>Repères dans le code public</summary>
+      <ul class="arch-refs">
+        {spec.codeReferences.map((reference) => <li><code>{reference.path}</code> — {reference.purpose}</li>)}
+      </ul>
+    </details>
+    {repositoryUrl && <p class="arch-repo-link"><a class="text-link" href={repositoryUrl} rel="noreferrer">Consulter le dépôt public</a></p>}
+  </div>
+</figure>

@@ -1,0 +1,43 @@
+---
+import SectionHeading from '../components/content/SectionHeading.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { approvedCvAsset, hasApprovedCvAsset } from '../lib/cv-asset';
+import { getPublicPortfolio } from '../lib/public-data';
+
+const portfolio = getPublicPortfolio();
+const cvAvailable = hasApprovedCvAsset();
+---
+
+<BaseLayout
+  title="CV — Euloge Mabiala"
+  description="Accéder au CV public et à jour d’Euloge Mabiala lorsqu’un document approuvé est disponible."
+  displayName={portfolio.profile.display_name}
+  identityVersion={portfolio.identity_version}
+  githubUrl={portfolio.contact.url}
+  currentPath="/cv/"
+>
+  <header class="page-header container">
+    <p class="eyebrow">Document public</p>
+    <h1>CV</h1>
+    <p class="lead">Seul un fichier explicitement approuvé pour publication peut être proposé ici.</p>
+  </header>
+
+  <section class="section container reading-width" aria-labelledby="cv-status-title">
+    <SectionHeading id="cv-status-title" title={cvAvailable ? 'CV public disponible' : 'CV public en cours de validation'} />
+    {cvAvailable ? (
+      <div class="download-panel" data-cv-status="available">
+        <p>Format {approvedCvAsset.format}, langue française.</p>
+        <a class="button" href={approvedCvAsset.href} download={approvedCvAsset.filename}>Télécharger le CV public au format PDF</a>
+      </div>
+    ) : (
+      <div class="download-panel" data-cv-status="fallback">
+        <p>Aucun PDF public approuvé n’est disponible pour le moment. Le CV historique archivé n’est pas publié.</p>
+        <p>Les informations validées restent consultables dans les pages Projets et À propos.</p>
+        <div class="action-row">
+          <a class="button" href="/projects/">Voir les projets</a>
+          <a class="button button--secondary" href={portfolio.contact.url} rel="me noreferrer">Profil GitHub</a>
+        </div>
+      </div>
+    )}
+  </section>
+</BaseLayout>

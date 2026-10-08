@@ -1,0 +1,134 @@
+---
+import ExperienceSummary from '../components/content/ExperienceSummary.astro';
+import ProfilePortrait from '../components/content/ProfilePortrait.astro';
+import HeroDecoration from '../components/layout/HeroDecoration.astro';
+import SectionHeading from '../components/content/SectionHeading.astro';
+import SkillEvidenceList from '../components/content/SkillEvidenceList.astro';
+import ProjectGrid from '../components/projects/ProjectGrid.astro';
+import GlassCarousel3D from '../components/projects/GlassCarousel3D.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPrimaryProjects, getSecondaryFeaturedProjects, getSkillGroups } from '../lib/page-models';
+import { getPublicPortfolio } from '../lib/public-data';
+
+const portfolio = getPublicPortfolio();
+const primaryProjects = getPrimaryProjects();
+const secondaryFeatured = getSecondaryFeaturedProjects();
+const currentExperience = portfolio.experience[0];
+const [firstName, ...restOfName] = portfolio.profile.display_name.split(' ');
+const surname = restOfName.join(' ');
+// The four domains are the components of the approved positioning label, in the approved order.
+const domains = ['Software engineering', 'Data', 'Applied AI', 'Industry 4.0'];
+---
+
+<BaseLayout
+  title="Euloge Mabiala — Software, Data & Industry 4.0"
+  description={`${portfolio.profile.summary} Projets publics, choix techniques et limites visibles.`}
+  displayName={portfolio.profile.display_name}
+  identityVersion={portfolio.identity_version}
+  githubUrl={portfolio.contact.url}
+  currentPath="/"
+>
+  <section class="container hero" aria-labelledby="page-title">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <HeroDecoration />
+    <div class="hero__layout">
+      <div class="hero__copy">
+        <p class="hero__rule">Build · Solve · Learn · Impact</p>
+        <h1 id="page-title">{firstName} <span class="surname">{surname}</span></h1>
+        <p class="hero__positioning">{portfolio.positioning.label}</p>
+        <ul class="hero__domains" aria-label="Domaines techniques">
+          {domains.map((domain) => <li>{domain}</li>)}
+        </ul>
+        <p class="lead">{portfolio.profile.summary}</p>
+        <p class="current-focus">{portfolio.profile.current_focus}</p>
+        <div class="action-row">
+          <a class="button" href="/projects/">Voir les projets</a>
+          <a class="button button--secondary" href={portfolio.contact.url} rel="me noreferrer">Voir le profil GitHub</a>
+        </div>
+      </div>
+      <ProfilePortrait class="hero-portrait" priority />
+    </div>
+    <div class="hero-projects" data-home-primary-project-count={primaryProjects.length}>
+      <div class="hero-projects__heading">
+        <p class="eyebrow">Sélection de projets / 01 — 03</p>
+        <h2>Du problème à l’application.</h2>
+        <a class="text-link" href="/projects/">Tous les projets</a>
+      </div>
+      <GlassCarousel3D id="hero-projects" items={primaryProjects} variant="hero" label="Trois projets principaux" />
+    </div>
+  </section>
+
+  <section class="section section--surface" aria-labelledby="proof-title">
+    <div class="container">
+      <h2 id="proof-title" class="visually-hidden">Repères de preuve</h2>
+      <ul class="proof-strip">
+        <li><strong>Ingénierie visible</strong><span>Architecture et mécanismes reliés à des projets publics.</span></li>
+        <li><strong>Validation explicite</strong><span>Tests présents et limites affichées sans métriques inventées.</span></li>
+        <li><strong>Contexte actuel</strong><span>Logiciel, données, automatisation et Industrie 4.0.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section container journey-teaser" aria-labelledby="journey-teaser-title">
+    <picture class="journey-teaser__visual" aria-hidden="true">
+      <source type="image/avif" srcset="/gallery/journey-map-960.avif 960w" sizes="(min-width: 64rem) 50vw, 100vw" />
+      <img src="/gallery/journey-map-1600.webp" width="1600" height="900" alt="" loading="lazy" decoding="async" />
+    </picture>
+    <div class="journey-teaser__content">
+      <p class="eyebrow">Du bac à l’Industrie 4.0</p>
+      <h2 id="journey-teaser-title">Le parcours derrière les projets.</h2>
+      <p>Fondations scientifiques, formation d’ingénierie, apprentissage par les projets, réseaux et cybersécurité, puis déploiement de cas d’usage industriels.</p>
+      <p class="muted">Chaque chapitre affiche son statut : vérifié, corroboré ou archive à confirmer.</p>
+      <a class="button" href="/parcours/">Découvrir le parcours</a>
+    </div>
+  </section>
+
+  <section class="section section--surface" aria-labelledby="more-projects-title">
+    <div class="container">
+      <SectionHeading id="more-projects-title" eyebrow="Autres projets featured" title="Quatre profils techniques complémentaires" />
+      <ProjectGrid projects={secondaryFeatured} compact label="Quatre autres projets featured" />
+    </div>
+  </section>
+
+  {currentExperience && (
+    <section class="section container" aria-labelledby="experience-title">
+      <SectionHeading id="experience-title" eyebrow="Expérience actuelle" title="Industrie 4.0, données et adoption" />
+      <ExperienceSummary experience={currentExperience} />
+      <p class="section-action"><a class="text-link" href="/about/">Voir le parcours et l’approche</a></p>
+    </section>
+  )}
+
+  <section class="section section--surface" aria-labelledby="skills-title">
+    <div class="container">
+      <SectionHeading
+        id="skills-title"
+        eyebrow="Compétences étayées"
+        title="Des niveaux qualitatifs, reliés aux projets"
+        description="Aucun pourcentage décoratif : chaque niveau vient du modèle public validé."
+      />
+      <SkillEvidenceList groups={getSkillGroups(10)} />
+      <p class="section-action"><a class="text-link" href="/about/#competences">Voir toutes les compétences publiques</a></p>
+    </div>
+  </section>
+
+  <section class="section container about-summary" aria-labelledby="about-title">
+    <SectionHeading id="about-title" eyebrow="À propos" title="Construire, vérifier, rendre les limites visibles" />
+    <p>{portfolio.education[0]?.public_wording}</p>
+    <p>Le portfolio privilégie des affirmations traçables, une attribution précise et une séparation stricte entre données publiques et preuves internes.</p>
+    <div class="action-row">
+      <a class="button" href="/about/">À propos</a>
+      <a class="button button--secondary" href={portfolio.contact.url} rel="me noreferrer">GitHub</a>
+    </div>
+  </section>
+
+  <section class="section closing-cta" aria-labelledby="closing-title">
+    <div class="container">
+      <h2 id="closing-title">Inspecter les projets et leurs preuves</h2>
+      <p>Parcourez les sept projets featured, leurs technologies, leurs capacités documentées et leurs limites.</p>
+      <div class="action-row">
+        <a class="button" href="/projects/">Voir les projets</a>
+        <a class="button button--secondary" href={portfolio.contact.url} rel="me noreferrer">Profil GitHub</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

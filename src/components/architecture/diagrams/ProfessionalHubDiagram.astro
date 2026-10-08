@@ -1,0 +1,10 @@
+---
+import { professionalHubArchitecture } from '../../../data/architecture/professional-hub';
+import ArchitectureDiagram from '../ArchitectureDiagram.astro';
+
+interface Props {
+  repositoryUrl?: string;
+}
+---
+
+<ArchitectureDiagram spec={professionalHubArchitecture} repositoryUrl={Astro.props.repositoryUrl} />

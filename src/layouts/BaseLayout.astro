@@ -1,0 +1,64 @@
+---
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import SiteHeader from '../components/navigation/SiteHeader.astro';
+import SeoHead from '../components/seo/SeoHead.astro';
+import { toCanonicalUrl } from '../lib/site-config';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  displayName: string;
+  identityVersion: string;
+  githubUrl: string;
+  currentPath: string;
+  canonicalPath?: string;
+  openGraphType?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  displayName,
+  identityVersion,
+  githubUrl,
+  currentPath,
+  canonicalPath = currentPath,
+  openGraphType = 'website',
+} = Astro.props;
+const canonical = toCanonicalUrl(canonicalPath);
+// Social crawlers need an absolute URL, so the card is only advertised once an origin is configured.
+const socialImage = toCanonicalUrl('/brand/og-default-v2.jpg');
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <SeoHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      siteName={`${displayName} — Portfolio`}
+      openGraphType={openGraphType}
+      imageUrl={socialImage}
+      imageAlt={`Monogramme EM et positionnement de ${displayName}`}
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+    <SiteHeader displayName={displayName} githubUrl={githubUrl} currentPath={currentPath} />
+    <main id="contenu" tabindex="-1">
+      <slot />
+    </main>
+    <SiteFooter displayName={displayName} identityVersion={identityVersion} githubUrl={githubUrl} />
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="em-title">
+  <title id="em-title">Monogramme EM</title>
+  <defs>
+    <linearGradient id="em-blue" x1="8" y1="14" x2="56" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0a1120"/>
+  <g fill="url(#em-blue)">
+    <path d="M12 16h6v32h-6z"/>
+    <path d="M18 16h15l-4 6H18z"/>
+    <path d="M18 29h13l-4 6H18z"/>
+    <path d="M18 42h15l-4 6H18z"/>
+    <path d="M37 48V21l7 9 7-9v27h-5.5V33l-1.5 2-1.5-2v15z"/>
+  </g>
+</svg>

@@ -1,0 +1,34 @@
+---
+import SectionHeading from '../../components/content/SectionHeading.astro';
+import GlassCarousel3D from '../../components/projects/GlassCarousel3D.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublicPortfolio } from '../../lib/public-data';
+
+const portfolio = getPublicPortfolio();
+const allProjects = [...portfolio.featured_projects, ...portfolio.secondary_projects];
+---
+
+<BaseLayout
+  title="Projets — Euloge Mabiala"
+  description="Projets sélectionnés, capacités techniques, technologies, tests présents et limites publiques."
+  displayName={portfolio.profile.display_name}
+  identityVersion={portfolio.identity_version}
+  githubUrl={portfolio.contact.url}
+  currentPath="/projects/"
+>
+  <header class="page-header container">
+    <p class="eyebrow">Inventaire public sélectionné</p>
+    <h1>Projets</h1>
+    <p class="lead">Douze projets publics — featured et secondaires — réunis dans une exploration immersive.</p>
+  </header>
+
+  <section class="section container" aria-labelledby="showcase-title">
+    <SectionHeading
+      id="showcase-title"
+      eyebrow="Featured · secondaires"
+      title="Tout l’inventaire public"
+      description="Naviguez parmi les douze projets. Les statuts et limites restent visibles pour distinguer les réalisations principales des pistes secondaires."
+    />
+    <GlassCarousel3D id="projects-showcase" items={allProjects} variant="showcase" label="Douze projets publics" />
+  </section>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+import type { EvidenceItem } from '../../lib/visual-evidence/types';
+
+interface Props {
+  item: EvidenceItem;
+}
+
+const { item } = Astro.props;
+---
+
+<figcaption class="evidence-caption">
+  <p class="evidence-caption__meta">
+    <span class="evidence-label">{item.label}</span>
+    <span class="evidence-caption__source">{item.source}</span>
+  </p>
+  <p class="evidence-caption__text">{item.caption}</p>
+  {item.context && <p class="evidence-caption__context">{item.context}</p>}
+  {item.kind === 'log' && item.redaction && <p class="evidence-caption__context">{item.redaction}</p>}
+</figcaption>

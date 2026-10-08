@@ -1,0 +1,77 @@
+{
+  "generated_by": "scripts/generate-evidence-images.ts",
+  "assets": [
+    {
+      "id": "corrector--answer-key-entry",
+      "project": "corrector",
+      "name": "answer-key-entry",
+      "width": 1180,
+      "height": 916,
+      "widths": [
+        640,
+        960,
+        1180
+      ]
+    },
+    {
+      "id": "elos--evidence-record",
+      "project": "elos",
+      "name": "evidence-record",
+      "width": 1184,
+      "height": 940,
+      "widths": [
+        640,
+        960,
+        1184
+      ]
+    },
+    {
+      "id": "elos--extraction-comparison",
+      "project": "elos",
+      "name": "extraction-comparison",
+      "width": 1184,
+      "height": 1150,
+      "widths": [
+        640,
+        960,
+        1184
+      ]
+    },
+    {
+      "id": "hub--isolation-account-a",
+      "project": "hub",
+      "name": "isolation-account-a",
+      "width": 980,
+      "height": 500,
+      "widths": [
+        640,
+        960,
+        980
+      ]
+    },
+    {
+      "id": "hub--isolation-account-b",
+      "project": "hub",
+      "name": "isolation-account-b",
+      "width": 980,
+      "height": 500,
+      "widths": [
+        640,
+        960,
+        980
+      ]
+    },
+    {
+      "id": "hub--upload-form",
+      "project": "hub",
+      "name": "upload-form",
+      "width": 1176,
+      "height": 1500,
+      "widths": [
+        640,
+        960,
+        1176
+      ]
+    }
+  ]
+}

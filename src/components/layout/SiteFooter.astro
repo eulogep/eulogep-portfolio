@@ -1,0 +1,38 @@
+---
+import { hasApprovedCvAsset } from '../../lib/cv-asset';
+
+interface Props {
+  displayName: string;
+  identityVersion: string;
+  githubUrl: string;
+}
+
+const { displayName, identityVersion, githubUrl } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <a class="footer-brand" href="/" aria-label={`${displayName}, accueil`}>
+      <img
+        class="footer-brand__mark"
+        src="/brand/em-mark-72.png"
+        srcset="/brand/em-mark-72.png 1x, /brand/em-mark-144.png 2x"
+        width="72"
+        height="72"
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <span>{displayName}<small>Identité professionnelle {identityVersion}</small></span>
+    </a>
+    <nav aria-label="Navigation de pied de page">
+      <ul class="footer-nav">
+        <li><a href="/parcours/">Parcours</a></li>
+        <li><a href="/projects/">Projets</a></li>
+        <li><a href="/about/">À propos</a></li>
+        {hasApprovedCvAsset() && <li><a href="/cv/">CV</a></li>}
+        <li><a href={githubUrl} rel="me noreferrer">Profil GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>

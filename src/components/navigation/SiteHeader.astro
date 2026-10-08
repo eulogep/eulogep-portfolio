@@ -1,0 +1,66 @@
+---
+import { hasApprovedCvAsset } from '../../lib/cv-asset';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  displayName: string;
+  items?: NavItem[];
+  githubUrl: string;
+  currentPath: string;
+}
+
+const {
+  displayName,
+  items = [
+    { href: '/', label: 'Accueil' },
+    { href: '/parcours/', label: 'Parcours' },
+    { href: '/projects/', label: 'Projets' },
+    { href: '/about/', label: 'À propos' },
+    // Same rule as the sitemap: no menu entry leads to the empty fallback page.
+    ...(hasApprovedCvAsset() ? [{ href: '/cv/', label: 'CV' }] : []),
+  ],
+  githubUrl,
+  currentPath,
+} = Astro.props;
+
+const isCurrent = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label={`${displayName}, accueil`}>
+      <img
+        class="brand__mark"
+        src="/brand/em-mark-72.png"
+        srcset="/brand/em-mark-72.png 1x, /brand/em-mark-144.png 2x"
+        width="72"
+        height="72"
+        alt=""
+        decoding="async"
+      />
+      <span>{displayName}</span>
+      <span class="brand__tag" aria-hidden="true">eulogep</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Navigation principale">
+      <ul class="nav-list">
+        {items.map((item) => <li><a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>)}
+        <li><a href={githubUrl} rel="me noreferrer">GitHub<span class="visually-hidden">, profil public</span></a></li>
+      </ul>
+    </nav>
+    <LanguageSwitcher />
+    <details class="mobile-nav">
+      <summary>Menu</summary>
+      <nav aria-label="Navigation mobile">
+        <ul class="nav-list">
+          {items.map((item) => <li><a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a></li>)}
+          <li><a href={githubUrl} rel="me noreferrer">GitHub<span class="visually-hidden">, profil public</span></a></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

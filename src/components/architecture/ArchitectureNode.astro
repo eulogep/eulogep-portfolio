@@ -1,0 +1,21 @@
+---
+import { isPartial, nodeTag } from '../../lib/architecture/labels';
+import type { PlacedNode } from '../../lib/architecture/geometry';
+
+interface Props {
+  node: PlacedNode;
+}
+
+const { node } = Astro.props;
+const { x, y, width, height } = node;
+---
+
+<g class:list={['arch-node', `arch-node--${node.kind}`, { 'is-optional': node.optional }]} data-node-id={node.id}>
+  <rect class="arch-node__box" x={x} y={y} width={width} height={height} rx="10" />
+  {node.kind === 'store' && <rect class="arch-node__inner" x={x + 4} y={y + 4} width={width - 8} height={height - 8} rx="7" />}
+  {node.kind === 'validation' && <rect class="arch-node__bar" x={x} y={y + 8} width="4" height={height - 16} rx="2" />}
+  <text class="arch-node__tag" x={x + 14} y={y + 19}>{nodeTag(node)}</text>
+  {isPartial(node) && <text class="arch-node__tag arch-node__tag--partial" x={x + width - 14} y={y + 19} text-anchor="end">PARTIEL</text>}
+  <text class="arch-node__title" x={x + 14} y={y + 41}>{node.title}</text>
+  {node.lines.map((line, index) => <text class="arch-node__line" x={x + 14} y={y + 59 + index * 16}>{line}</text>)}
+</g>

@@ -1,0 +1,16 @@
+---
+import '../../styles/language-switcher.css';
+---
+
+<div class="language-switcher">
+  <label for="portfolio-language">Langue</label>
+  <select id="portfolio-language" data-language-select aria-label="Choisir la langue du portfolio">
+    <option value="fr">FR</option>
+    <option value="en">EN</option>
+  </select>
+  <span class="visually-hidden" aria-live="polite" data-language-status></span>
+</div>
+
+<script>
+  import '../../scripts/language-switcher';
+</script>

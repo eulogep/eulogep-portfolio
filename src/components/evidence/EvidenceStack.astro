@@ -1,0 +1,16 @@
+---
+import type { EvidenceItem } from '../../lib/visual-evidence/types';
+
+import EvidenceFigure from './EvidenceFigure.astro';
+import EvidenceLog from './EvidenceLog.astro';
+
+interface Props {
+  items: readonly EvidenceItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="evidence-stack">
+  {items.map((item) => (item.kind === 'image' ? <EvidenceFigure item={item} /> : <EvidenceLog item={item} />))}
+</div>

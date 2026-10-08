@@ -1,0 +1,147 @@
+---
+import { statusLabel } from '../../lib/page-models';
+import type { PublicPortfolioView } from '../../types/public-portfolio';
+
+interface Props {
+  items: PublicPortfolioView['journey'];
+}
+
+const { items } = Astro.props;
+interface InstitutionMark {
+  name: string;
+  logo: string;
+  width: number;
+  height: number;
+  href: string;
+  treatment?: 'dark';
+  wide?: boolean;
+}
+
+const institutionMarks: Record<string, InstitutionMark[]> = {
+  'journey-baccalaureate': [
+    {
+      name: 'Lycée Colbert · Académie de Paris',
+      logo: '/institutions/academie-paris.png',
+      width: 480,
+      height: 480,
+      href: 'https://lyc-colbert.ac-paris.fr/',
+    },
+  ],
+  'journey-cpge': [
+    {
+      name: 'Lycée Paul Éluard · Saint-Denis',
+      logo: '/institutions/lycee-paul-eluard.png',
+      width: 270,
+      height: 100,
+      href: 'https://lyceepauleluard.fr/site/',
+    },
+  ],
+  'journey-esiea': [
+    {
+      name: 'ESIEA',
+      logo: '/institutions/esiea.png',
+      width: 416,
+      height: 144,
+      href: 'https://www.esiea.fr/',
+    },
+  ],
+  'journey-cy-tech': [
+    {
+      name: 'CY Tech',
+      logo: '/institutions/cy-tech.png',
+      width: 150,
+      height: 79,
+      href: 'https://cytech.cyu.fr/',
+    },
+    {
+      name: 'Formasup Paris Île-de-France',
+      logo: '/institutions/formasup-paris-idf.svg',
+      width: 328,
+      height: 35,
+      href: 'https://www.formasup-paris.com/',
+      treatment: 'dark',
+    },
+  ],
+  'journey-industry': [
+    {
+      name: 'Soufflet Malt',
+      logo: '/institutions/soufflet-malt.png',
+      width: 604,
+      height: 99,
+      href: 'https://www.souffletmalt.com/fr/',
+      wide: true,
+    },
+  ],
+};
+---
+
+<div class="journey-layout">
+  <nav class="journey-rail" aria-label="Chapitres du parcours">
+    <p class="eyebrow">Navigation narrative</p>
+    <ol>
+      {items.map((item, index) => (
+        <li>
+          <a href={`#${item.id}`}>
+            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            {item.period}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+
+  <ol class="journey-sequence">
+    {items.map((item, index) => {
+      const marks = institutionMarks[item.id] ?? [];
+
+      return (
+        <li id={item.id} class={`journey-chapter journey-chapter--${item.theme.toLowerCase()}`}>
+        <div class="journey-chapter__marker" aria-hidden="true">
+          <span>{String(index + 1).padStart(2, '0')}</span>
+        </div>
+        <article>
+          <div class="journey-chapter__meta">
+            <span>{item.period}</span>
+            <span class={`status status--${item.status.toLowerCase()}`}>{statusLabel(item.status)}</span>
+          </div>
+          <p class="eyebrow">{item.eyebrow}</p>
+          <h2>{item.title}</h2>
+          <p>{item.summary}</p>
+          {marks.length > 0 && (
+            <div class="institution-marks" aria-label="Établissements associés à cette étape">
+              {marks.map((mark) => (
+                <a
+                  class:list={[
+                    'institution-mark',
+                    {
+                      'institution-mark--dark': mark.treatment === 'dark',
+                      'institution-mark--wide': mark.wide,
+                    },
+                  ]}
+                  href={mark.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${mark.name} — ouvrir le site officiel`}
+                >
+                  <span class="institution-mark__visual">
+                    <img
+                      src={mark.logo}
+                      width={mark.width}
+                      height={mark.height}
+                      alt={`Logo officiel — ${mark.name}`}
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </span>
+                  <span>{mark.name}</span>
+                </a>
+              ))}
+            </div>
+          )}
+          <p class="journey-chapter__proof">{item.proof_label}</p>
+        </article>
+      </li>
+      );
+    })}
+  </ol>
+</div>

@@ -1,0 +1,40 @@
+---
+import { getEvidenceAsset } from '../../data/visual-evidence';
+import type { EvidenceImageItem } from '../../lib/visual-evidence/types';
+
+import EvidenceCaption from './EvidenceCaption.astro';
+
+interface Props {
+  item: EvidenceImageItem;
+}
+
+const { item } = Astro.props;
+const asset = getEvidenceAsset(item.assetId);
+const base = `/evidence/${asset.project}/${asset.name}`;
+const avifSrcset = asset.widths.map((width) => `${base}-${width}.avif ${width}w`).join(', ');
+const sizes = {
+  wide: '(min-width: 72rem) 1120px, calc(100vw - 2rem)',
+  half: '(min-width: 64rem) 560px, calc(100vw - 2rem)',
+  narrow: '(min-width: 48rem) 720px, calc(100vw - 2rem)',
+}[item.layout];
+---
+
+<figure class={`evidence-figure evidence-figure--${item.layout}`} data-evidence-id={item.id} data-evidence-type={item.evidenceType}>
+  <div class="evidence-figure__frame">
+    <picture>
+      <source type="image/avif" srcset={avifSrcset} sizes={sizes} />
+      <img
+        src={`${base}-${asset.width}.webp`}
+        width={asset.width}
+        height={asset.height}
+        alt={item.alt}
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  </div>
+  <EvidenceCaption item={item} />
+  <p class="evidence-figure__open">
+    <a class="text-link" href={`${base}-${asset.width}.webp`} target="_blank" rel="noopener">Ouvrir l’image en taille réelle ({asset.width} × {asset.height})<span class="visually-hidden"> — s’ouvre dans un nouvel onglet</span></a>
+  </p>
+</figure>

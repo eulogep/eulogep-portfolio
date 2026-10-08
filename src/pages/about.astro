@@ -1,0 +1,84 @@
+---
+import ExperienceSummary from '../components/content/ExperienceSummary.astro';
+import CertificationList from '../components/content/CertificationList.astro';
+import ProfilePortrait from '../components/content/ProfilePortrait.astro';
+import SectionHeading from '../components/content/SectionHeading.astro';
+import SkillEvidenceList from '../components/content/SkillEvidenceList.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSkillGroups, statusLabel } from '../lib/page-models';
+import { getPublicPortfolio } from '../lib/public-data';
+
+const portfolio = getPublicPortfolio();
+---
+
+<BaseLayout
+  title="À propos — Euloge Mabiala"
+  description={`${portfolio.profile.summary} Contexte actuel, formation et compétences étayées.`}
+  displayName={portfolio.profile.display_name}
+  identityVersion={portfolio.identity_version}
+  githubUrl={portfolio.contact.url}
+  currentPath="/about/"
+>
+  <header class="page-header page-header--profile container">
+    <div>
+      <p class="eyebrow">Profil public</p>
+      <h1>À propos</h1>
+      <p class="lead">{portfolio.profile.summary}</p>
+      <p class="current-focus">{portfolio.profile.current_focus}</p>
+    </div>
+    <ProfilePortrait class="about-portrait" priority />
+  </header>
+
+  <section class="section container" aria-labelledby="experience-title">
+    <SectionHeading id="experience-title" title="Expérience actuelle" />
+    <div class="timeline-list">
+      {portfolio.experience.map((experience) => <ExperienceSummary experience={experience} />)}
+    </div>
+  </section>
+
+  <section class="section section--surface" aria-labelledby="education-title">
+    <div class="container">
+      <SectionHeading id="education-title" title="Formation en cours" />
+      <ul class="education-list">
+        {portfolio.education.map((education) => (
+          <li>
+            <p class="metadata"><time>{education.period}</time> · {statusLabel(education.status)}</p>
+            <h3>{education.programme}</h3>
+            <p>{education.public_wording}</p>
+            <p><strong>État :</strong> formation en cours.</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="certifications" class="section container" aria-labelledby="certifications-title">
+    <SectionHeading
+      id="certifications-title"
+      eyebrow="Certifications"
+      title="Trois acquis techniques corroborés"
+      description="Ces éléments concordent entre le CV historique et le profil LinkedIn public. Ils restent volontairement distingués d’une certification vérifiée tant que le badge ou certificat direct n’est pas archivé."
+    />
+    <CertificationList items={portfolio.certifications} />
+  </section>
+
+  <section id="competences" class="section container" aria-labelledby="skills-title">
+    <SectionHeading
+      id="skills-title"
+      title="Compétences et niveaux de preuve"
+      description="Les niveaux sont qualitatifs. Les limites du modèle public restent visibles lorsqu’elles existent."
+    />
+    <SkillEvidenceList groups={getSkillGroups()} />
+  </section>
+
+  <section class="section section--surface" aria-labelledby="approach-title">
+    <div class="container reading-width">
+      <SectionHeading id="approach-title" title="Approche de travail" />
+      <p>Ce portfolio sépare les faits publics, les éléments encore à vérifier et les preuves internes. Les pages affichent uniquement la projection publique générée et ses limites.</p>
+      <div class="action-row">
+        <a class="button" href="/projects/">Voir les projets</a>
+        <a class="button button--secondary" href={portfolio.contact.url} rel="me noreferrer">Profil GitHub</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

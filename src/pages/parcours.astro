@@ -1,0 +1,69 @@
+---
+import JourneyTimeline from '../components/content/JourneyTimeline.astro';
+import ProjectGallery from '../components/content/ProjectGallery.astro';
+import SectionHeading from '../components/content/SectionHeading.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPublicPortfolio } from '../lib/public-data';
+
+const portfolio = getPublicPortfolio();
+---
+
+<BaseLayout
+  title="Parcours — Euloge Mabiala"
+  description="Du socle scientifique aux systèmes logiciels, à la donnée, à l’IA appliquée et à l’Industrie 4.0 : un parcours raconté avec ses niveaux de preuve."
+  displayName={portfolio.profile.display_name}
+  identityVersion={portfolio.identity_version}
+  githubUrl={portfolio.contact.url}
+  currentPath="/parcours/"
+>
+  <header id="journey-start" class="journey-hero">
+    <picture class="journey-hero__visual" aria-hidden="true">
+      <source type="image/avif" srcset="/gallery/journey-map-960.avif 960w" sizes="100vw" />
+      <img src="/gallery/journey-map-1600.webp" width="1600" height="900" alt="" fetchpriority="high" decoding="async" />
+    </picture>
+    <div class="container journey-hero__content">
+      <p class="eyebrow">Parcours · archives · preuves</p>
+      <h1>Des fondations scientifiques aux systèmes réels.</h1>
+      <p class="lead">Une progression racontée comme elle s’est construite : apprendre, expérimenter, vérifier, puis déployer dans un contexte industriel.</p>
+      <div class="journey-legend" aria-label="Légende des niveaux de preuve">
+        <span><i class="legend-dot legend-dot--verified"></i> Vérifié</span>
+        <span><i class="legend-dot legend-dot--corroborated"></i> Corroboré</span>
+        <span><i class="legend-dot legend-dot--to-verify"></i> Archive à confirmer</span>
+      </div>
+      <a class="button" href="#journey-baccalaureate">Commencer le récit</a>
+    </div>
+  </header>
+
+  <section class="section container" aria-labelledby="journey-title">
+    <SectionHeading
+      id="journey-title"
+      eyebrow="Six chapitres"
+      title="Un parcours, plusieurs niveaux de preuve"
+      description="Les premiers jalons viennent du CV historique. Ils sont visibles parce qu’ils éclairent la progression, mais restent explicitement distingués des faits corroborés ou vérifiés."
+    />
+    <JourneyTimeline items={portfolio.journey} />
+  </section>
+
+  <section class="section section--surface" aria-labelledby="gallery-title">
+    <div class="container">
+      <SectionHeading
+        id="gallery-title"
+        eyebrow="Galerie de construction"
+        title="Voir le travail, pas seulement le lire"
+        description="Captures réelles, validations observables et une illustration narrative clairement séparée des preuves. Faites défiler horizontalement ou utilisez les repères numérotés."
+      />
+    </div>
+    <ProjectGallery />
+  </section>
+
+  <section class="section container narrative-boundary" aria-labelledby="boundary-title">
+    <p class="eyebrow">Transparence</p>
+    <h2 id="boundary-title">Le récit ne gomme pas les incertitudes.</h2>
+    <p>Le bac et la CPGE proviennent du CV historique et restent à confirmer par des pièces académiques. ESIEA est corroboré sans dates publiques. La formation actuelle, le contexte Industrie 4.0 et les projets conservent les statuts issus du modèle d’identité.</p>
+    <p class="trademark-note">Les logos servent uniquement à identifier les établissements du parcours. Ils restent la propriété de leurs titulaires et leur présence ne suggère ni partenariat, ni validation de ce portfolio.</p>
+    <div class="action-row">
+      <a class="button" href="/projects/">Explorer les projets</a>
+      <a class="button button--secondary" href="/about/">Lire le profil actuel</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import { getCapturedText } from '../../data/visual-evidence';
+import type { EvidenceCodeItem, EvidenceLogItem } from '../../lib/visual-evidence/types';
+
+import EvidenceCaption from './EvidenceCaption.astro';
+
+interface Props {
+  item: EvidenceLogItem | EvidenceCodeItem;
+}
+
+const { item } = Astro.props;
+---
+
+<figure class="evidence-log" data-evidence-id={item.id} data-evidence-type={item.evidenceType}>
+  {item.kind === 'log' && item.runs.map((run, index) => {
+    const capture = getCapturedText(run.captureId);
+    return (
+      <div class="evidence-run">
+        <p class="evidence-run__command"><span aria-hidden="true">$ </span><code>{run.command}</code></p>
+        <pre class="evidence-run__output" tabindex="0" role="region" aria-label={`Sortie de l’exécution ${index + 1} sur ${item.runs.length}`}><code>{capture.lines.join('\n')}</code></pre>
+      </div>
+    );
+  })}
+  {item.kind === 'code' && (() => {
+    const capture = getCapturedText(item.captureId);
+    return (
+      <div class="evidence-run">
+        <p class="evidence-run__command"><code>{item.file}</code></p>
+        <div class="evidence-code" tabindex="0" role="region" aria-label={`Extrait de code de ${item.file}`}>
+          <ol start={capture.first_line ?? 1}>
+            {capture.lines.map((line) => <li><code>{line}</code></li>)}
+          </ol>
+        </div>
+      </div>
+    );
+  })()}
+  <EvidenceCaption item={item} />
+</figure>

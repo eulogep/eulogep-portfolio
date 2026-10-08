@@ -1,0 +1,20 @@
+---
+import type { PlacedEdge } from '../../lib/architecture/geometry';
+
+interface Props {
+  edge: PlacedEdge;
+  markerPrefix: string;
+}
+
+const { edge, markerPrefix } = Astro.props;
+const vertical = /^M[\d.]+ [\d.]+V[\d.]+$/.test(edge.path);
+---
+
+<g class:list={['arch-edge', `arch-edge--${edge.kind}`]} data-edge={`${edge.from}>${edge.to}`}>
+  <path d={edge.path} marker-end={`url(#${markerPrefix}-arrow-${edge.kind})`} />
+  {/* Decorative overlay: shows direction of flow. The base path above carries the meaning. */}
+  <path class="arch-edge__pulse" d={edge.path} pathLength="1" aria-hidden="true" />
+  {edge.label && (
+    <text class="arch-edge__label" x={edge.labelX} y={edge.labelY} text-anchor={vertical ? 'start' : 'middle'}>{edge.label}</text>
+  )}
+</g>

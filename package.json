@@ -1,0 +1,40 @@
+{
+  "name": "eulogep-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0 <25",
+    "npm": ">=11"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "compile:data": "tsx scripts/compile-public-portfolio.ts",
+    "check:data": "tsx scripts/compile-public-portfolio.ts --check",
+    "prebuild": "npm run check:data",
+    "build": "astro build && npm run verify:dist",
+    "preview:serve": "astro preview",
+    "verify:dist": "tsx scripts/verify-public-artifact.ts",
+    "typecheck": "astro check",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:privacy": "vitest run tests/privacy"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "astro": "7.3.5",
+    "tailwindcss": "4.3.3",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.0",
+    "eslint": "10.11.0",
+    "eslint-plugin-astro": "3.2.1",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.1",
+    "vitest": "5.0.2"
+  }
+}

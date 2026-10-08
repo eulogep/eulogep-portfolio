@@ -1,0 +1,10 @@
+---
+import { correctorAiArchitecture } from '../../../data/architecture/corrector-ai';
+import ArchitectureDiagram from '../ArchitectureDiagram.astro';
+
+interface Props {
+  repositoryUrl?: string;
+}
+---
+
+<ArchitectureDiagram spec={correctorAiArchitecture} repositoryUrl={Astro.props.repositoryUrl} />

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPublicPortfolio } from '../lib/public-data';
+
+const portfolio = getPublicPortfolio();
+---
+
+<BaseLayout
+  title="Page introuvable — Euloge Mabiala"
+  description="La page demandée n’existe pas."
+  displayName={portfolio.profile.display_name}
+  identityVersion={portfolio.identity_version}
+  githubUrl={portfolio.contact.url}
+  currentPath="/404/"
+>
+  <section class="page-header container reading-width">
+    <p class="eyebrow">Erreur 404</p>
+    <h1>Page introuvable</h1>
+    <p class="lead">La page demandée n’existe pas ou a changé d’adresse.</p>
+    <div class="action-row">
+      <a class="button" href="/">Revenir à l’accueil</a>
+      <a class="button button--secondary" href="/projects/">Voir les projets</a>
+    </div>
+  </section>
+</BaseLayout>

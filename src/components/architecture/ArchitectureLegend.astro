@@ -1,0 +1,30 @@
+---
+import { kindLabels, kindMeaning, usedKinds, usesEdgeKind } from '../../lib/architecture/labels';
+import type { ArchitectureSpec } from '../../lib/architecture/types';
+
+interface Props {
+  spec: ArchitectureSpec;
+}
+
+const { spec } = Astro.props;
+const kinds = usedKinds(spec.nodes);
+const hasOptional = spec.nodes.some((node) => node.optional);
+const hasPartial = spec.nodes.some((node) => node.evidence === 'CORROBORATED') || spec.edges.some((edge) => edge.evidence === 'CORROBORATED');
+---
+
+<div class="arch-legend" role="group" aria-label="Légende du schéma">
+  <ul>
+    {kinds.map((kind) => (
+      <li><span class="arch-legend__tag">{kindLabels[kind]}</span> {kindMeaning[kind]}</li>
+    ))}
+    <li><span class="arch-legend__line arch-legend__line--flow" aria-hidden="true"></span> flux de données</li>
+    {usesEdgeKind(spec.edges, 'fallback') && (
+      <li><span class="arch-legend__line arch-legend__line--fallback" aria-hidden="true"></span> repli : essayé seulement si l’étape précédente échoue</li>
+    )}
+    {usesEdgeKind(spec.edges, 'refusal') && (
+      <li><span class="arch-legend__line arch-legend__line--refusal" aria-hidden="true"></span> refus explicite, sans traitement</li>
+    )}
+    {hasOptional && <li><span class="arch-legend__tag">OPTIONNEL</span> bordure en tirets : peut être absent</li>}
+    {hasPartial && <li><span class="arch-legend__tag">PARTIEL</span> observé sur une partie du code seulement</li>}
+  </ul>
+</div>

@@ -1,0 +1,16 @@
+---
+import type { PublicProject } from '../../lib/page-models';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  projects: PublicProject[];
+  compact?: boolean;
+  label: string;
+}
+
+const { projects, compact = false, label } = Astro.props;
+---
+
+<ul class:list={['project-grid', { 'project-grid--compact': compact }]} aria-label={label}>
+  {projects.map((project) => <li><ProjectCard project={project} compact={compact} /></li>)}
+</ul>

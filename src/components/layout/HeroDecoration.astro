@@ -1,0 +1,173 @@
+---
+/*
+ * Layer 3 decoration for the hero: a node/edge diagram echoing the reference art direction.
+ * Pure inline SVG (no raster, no script) so it stays crisp, themeable and nearly free.
+ * Purely decorative: hidden from assistive tech and dropped below the desktop breakpoint.
+ */
+---
+
+<svg
+  class="hero-decoration"
+  viewBox="0 0 420 420"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <radialGradient id="hero-halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.18" />
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="hero-edge" x1="0" y1="0" x2="420" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.55" />
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0.15" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="210" cy="210" r="205" fill="url(#hero-halo)" />
+  <circle class="hero-deco__ring" cx="210" cy="210" r="150" stroke="#1d2b45" stroke-width="1" />
+  <circle class="hero-deco__ring hero-deco__ring--inner" cx="210" cy="210" r="96" stroke="#1d2b45" stroke-width="1" />
+
+  <g class="hero-deco__edges" stroke="url(#hero-edge)" stroke-width="1.25">
+    <path d="M62 148 L150 96 L262 120 L352 78" pathLength="1" />
+    <path d="M150 96 L188 210 L300 246" pathLength="1" />
+    <path d="M62 148 L108 268 L188 210" pathLength="1" />
+    <path d="M108 268 L206 342 L300 246" pathLength="1" />
+    <path d="M262 120 L300 246 L364 300" pathLength="1" />
+    <path d="M206 342 L364 300" pathLength="1" />
+  </g>
+
+  <g class="hero-deco__nodes" fill="#0a1120" stroke="#38bdf8" stroke-width="1.5">
+    <circle cx="150" cy="96" r="5" />
+    <circle cx="262" cy="120" r="5" />
+    <circle cx="188" cy="210" r="6.5" />
+    <circle cx="108" cy="268" r="5" />
+    <circle cx="300" cy="246" r="5" />
+    <circle cx="206" cy="342" r="5" />
+  </g>
+
+  <g class="hero-deco__sparks" fill="#22d3ee">
+    <circle cx="62" cy="148" r="2.5" />
+    <circle cx="352" cy="78" r="2.5" />
+    <circle cx="364" cy="300" r="2.5" />
+  </g>
+</svg>
+
+<style>
+  .hero-decoration {
+    position: absolute;
+    z-index: 0;
+    inset-block-start: 50%;
+    inset-inline-end: -4rem;
+    width: min(34rem, 42vw);
+    height: auto;
+    translate: 0 -50%;
+    pointer-events: none;
+  }
+
+  /* Below the desktop breakpoint the hero is typography-only. */
+  @media (max-width: 64rem) {
+    .hero-decoration {
+      display: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .hero-decoration {
+      display: none;
+    }
+  }
+
+  /* --- Motion. Decorative only, and only when motion is welcome. --------- */
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* Edges draw themselves once, as if the system were coming online. */
+    .hero-deco__edges path {
+      animation: hero-trace 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-deco__edges path:nth-child(1) { animation-delay: 300ms; }
+    .hero-deco__edges path:nth-child(2) { animation-delay: 460ms; }
+    .hero-deco__edges path:nth-child(3) { animation-delay: 620ms; }
+    .hero-deco__edges path:nth-child(4) { animation-delay: 780ms; }
+    .hero-deco__edges path:nth-child(5) { animation-delay: 940ms; }
+    .hero-deco__edges path:nth-child(6) { animation-delay: 1100ms; }
+
+    .hero-deco__nodes circle {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: hero-breathe 5.5s ease-in-out infinite;
+    }
+
+    .hero-deco__nodes circle:nth-child(2) { animation-delay: -0.9s; }
+    .hero-deco__nodes circle:nth-child(3) { animation-delay: -1.8s; }
+    .hero-deco__nodes circle:nth-child(4) { animation-delay: -2.7s; }
+    .hero-deco__nodes circle:nth-child(5) { animation-delay: -3.6s; }
+    .hero-deco__nodes circle:nth-child(6) { animation-delay: -4.5s; }
+
+    .hero-deco__sparks circle {
+      animation: hero-spark 4s ease-in-out infinite;
+    }
+
+    .hero-deco__sparks circle:nth-child(2) { animation-delay: -1.3s; }
+    .hero-deco__sparks circle:nth-child(3) { animation-delay: -2.6s; }
+
+    .hero-deco__ring {
+      stroke-dasharray: 3 9;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: hero-ring 28s linear infinite;
+    }
+
+    .hero-deco__ring--inner {
+      animation-duration: 20s;
+      animation-direction: reverse;
+    }
+  }
+
+  /* Every edge carries pathLength="1", so one dash rule fits all of them. */
+  @keyframes hero-trace {
+    from {
+      stroke-dasharray: 0 1;
+    }
+
+    to {
+      stroke-dasharray: 1 0;
+    }
+  }
+
+  @keyframes hero-breathe {
+    0%,
+    100% {
+      opacity: 0.85;
+      scale: 1;
+    }
+
+    50% {
+      opacity: 1;
+      scale: 1.22;
+    }
+  }
+
+  @keyframes hero-spark {
+    0%,
+    100% {
+      opacity: 0.45;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes hero-ring {
+    from {
+      rotate: 0deg;
+    }
+
+    to {
+      rotate: 360deg;
+    }
+  }
+</style>

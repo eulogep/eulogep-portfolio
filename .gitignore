@@ -1,0 +1,21 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+coverage/
+.env
+.env.*
+!.env.example
+.agent/
+
+# Raw private sources: needed locally by the compiler/verifier, never versioned.
+identity-sources/
+CV/
+chatgpt/
+professional-identity/
+professional-identity.json
+professional-identity-master.md
+/Image ChatGPT*.png
+/favicon.png
+tmp/

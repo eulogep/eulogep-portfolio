@@ -1,0 +1,32 @@
+---
+import type { PublicPortfolioView } from '../../types/public-portfolio';
+
+interface Props {
+  items: PublicPortfolioView['certifications'];
+}
+
+const { items } = Astro.props;
+const issuerMarks: Record<string, string> = {
+  'cert-ccna-srwe': 'CC',
+  'cert-airflow-3-fundamentals': 'AF',
+  'cert-unodc-cybercrime': 'UN',
+};
+---
+
+<ol class="certification-grid">
+  {items.map((certification) => (
+    <li>
+      <article class="certification-card">
+        <div class="certification-card__header">
+          <span class="certification-card__mark" aria-hidden="true">{issuerMarks[certification.certification_id]}</span>
+          <span class="status status--corroborated">Corroborée</span>
+        </div>
+        <p class="metadata"><time>{certification.issued}</time></p>
+        <h3>{certification.name}</h3>
+        <p class="certification-card__issuer">{certification.issuer}</p>
+        <p class="certification-card__proof">{certification.proof_label}</p>
+        <p class="certification-card__limitation">Limite : {certification.limitation}</p>
+      </article>
+    </li>
+  ))}
+</ol>

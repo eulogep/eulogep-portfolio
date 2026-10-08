@@ -1,0 +1,10 @@
+---
+import { engineerLearningOsArchitecture } from '../../../data/architecture/engineer-learning-os';
+import ArchitectureDiagram from '../ArchitectureDiagram.astro';
+
+interface Props {
+  repositoryUrl?: string;
+}
+---
+
+<ArchitectureDiagram spec={engineerLearningOsArchitecture} repositoryUrl={Astro.props.repositoryUrl} />

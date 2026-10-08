@@ -1,0 +1,840 @@
+{
+  "schema_version": "1.0.0",
+  "identity_version": "2.1.1",
+  "policy_version": "1.0.0",
+  "locale": "fr",
+  "profile": {
+    "display_name": "Euloge Mabiala",
+    "identity_tag": "eulogep",
+    "summary": "Euloge Mabiala is a developer whose inspected work spans software engineering, data and automation.",
+    "current_focus": "His current work-study context at Soufflet Malt involves Industry 4.0 deployment, industrial data, functional testing, KPI follow-up and user adoption.",
+    "claim_ids": [
+      "SAFE-001",
+      "SAFE-003"
+    ]
+  },
+  "positioning": {
+    "label": "Technical project builder at the intersection of Industry 4.0, software engineering, data and applied AI",
+    "status": "PROPOSED",
+    "disclaimer": "Positionnement professionnel sélectionné par le propriétaire, et non intitulé d'emploi officiel."
+  },
+  "experience": [
+    {
+      "id": "experience-soufflet-current",
+      "title": "Apprenti, déploiement de cas d'usage Industrie 4.0",
+      "organization": "Soufflet Malt",
+      "period": "Depuis septembre 2026",
+      "summary": "Industry 4.0 use-case deployment, functional testing, industrial data and KPI follow-up, user adoption and coordination",
+      "status": "VERIFIED",
+      "claim_ids": [
+        "SAFE-003",
+        "SAFE-004"
+      ],
+      "order": 1
+    }
+  ],
+  "education": [
+    {
+      "id": "education-cy-2026-2027",
+      "programme": "Licence Professionnelle Métiers des réseaux informatiques et télécommunications — Réseaux et cybersécurité",
+      "institutions": [
+        "CY Tech",
+        "Formasup Paris Île-de-France"
+      ],
+      "period": "2026-2027",
+      "completion_state": "IN_PROGRESS",
+      "status": "CORROBORATED",
+      "public_wording": "Licence Professionnelle Métiers des réseaux informatiques et télécommunications, parcours Réseaux et cybersécurité — CY Cergy Paris Université / CY Tech, en alternance (Formasup), 2026–2027",
+      "claim_ids": [
+        "SAFE-002"
+      ],
+      "order": 1
+    }
+  ],
+  "certifications": [
+    {
+      "certification_id": "cert-ccna-srwe",
+      "name": "CCNA Switching, Routing and Wireless Essentials",
+      "issuer": "Cisco · Cisco Networking Academy",
+      "issued": "Mars 2026",
+      "status": "CORROBORATED",
+      "proof_label": "CV historique et profil LinkedIn public concordants",
+      "limitation": "Badge ou certificat direct encore à archiver dans le registre de preuves.",
+      "claim_id": "claim-cert-ccna"
+    },
+    {
+      "certification_id": "cert-airflow-3-fundamentals",
+      "name": "Astronomer Certification for Apache Airflow 3 Fundamentals",
+      "issuer": "Astronomer",
+      "issued": "Septembre 2025",
+      "status": "CORROBORATED",
+      "proof_label": "CV historique et profil LinkedIn public concordants",
+      "limitation": "Badge ou certificat direct encore à archiver dans le registre de preuves.",
+      "claim_id": "claim-cert-airflow"
+    },
+    {
+      "certification_id": "cert-unodc-cybercrime",
+      "name": "UNODC cybercrime e-learning training",
+      "issuer": "Office des Nations unies contre la drogue et le crime",
+      "issued": "Décembre 2025",
+      "status": "CORROBORATED",
+      "proof_label": "CV historique et profil LinkedIn public concordants",
+      "limitation": "Badge ou certificat direct encore à archiver dans le registre de preuves.",
+      "claim_id": "claim-cert-unodc"
+    }
+  ],
+  "journey": [
+    {
+      "id": "journey-baccalaureate",
+      "period": "2021",
+      "eyebrow": "Fondations scientifiques",
+      "title": "Baccalauréat général",
+      "summary": "Mention Bien, spécialités mathématiques et physique — information issue du CV historique et encore à confirmer par un document académique.",
+      "status": "TO_VERIFY",
+      "proof_label": "Archive personnelle · à confirmer",
+      "theme": "FOUNDATION",
+      "claim_ids": [
+        "claim-baccalaureate"
+      ],
+      "order": 1
+    },
+    {
+      "id": "journey-cpge",
+      "period": "2021 — 2024",
+      "eyebrow": "Méthode et intensité",
+      "title": "CPGE MPSI / PSI",
+      "summary": "Un parcours scientifique déclaré dans le CV historique. Le jalon est conservé comme repère narratif, sans le présenter comme un diplôme vérifié.",
+      "status": "TO_VERIFY",
+      "proof_label": "Archive personnelle · à confirmer",
+      "theme": "FOUNDATION",
+      "claim_ids": [
+        "claim-cpge"
+      ],
+      "order": 2
+    },
+    {
+      "id": "journey-esiea",
+      "period": "Étape suivante",
+      "eyebrow": "Passage à l’ingénierie",
+      "title": "Formation antérieure : ESIEA",
+      "summary": "Une étape antérieure en informatique et ingénierie. Les dates restent volontairement absentes tant que la chronologie n’est pas consolidée.",
+      "status": "CORROBORATED",
+      "proof_label": "Parcours corroboré · dates non publiées",
+      "theme": "ENGINEERING",
+      "claim_ids": [
+        "claim-esiea-history"
+      ],
+      "order": 3
+    },
+    {
+      "id": "journey-projects",
+      "period": "En parallèle",
+      "eyebrow": "Apprendre en construisant",
+      "title": "Les projets comme laboratoire",
+      "summary": "Applications d’apprentissage, outils de données, validation de sorties IA, sécurité et produits full-stack : les dépôts publics rendent la progression inspectable.",
+      "status": "VERIFIED",
+      "proof_label": "Dépôts publics inspectés",
+      "theme": "PROJECTS",
+      "claim_ids": [
+        "SAFE-005",
+        "SAFE-006",
+        "SAFE-007",
+        "SAFE-011"
+      ],
+      "order": 4
+    },
+    {
+      "id": "journey-cy-tech",
+      "period": "2026-2027",
+      "eyebrow": "Réseaux et cybersécurité",
+      "title": "CY Tech · Formasup",
+      "summary": "Licence Professionnelle Métiers des réseaux informatiques et télécommunications, parcours Réseaux et cybersécurité — CY Cergy Paris Université / CY Tech, en alternance (Formasup), 2026–2027",
+      "status": "CORROBORATED",
+      "proof_label": "Formation en cours · corroborée",
+      "theme": "ENGINEERING",
+      "claim_ids": [
+        "SAFE-002"
+      ],
+      "order": 5
+    },
+    {
+      "id": "journey-industry",
+      "period": "Depuis septembre 2026",
+      "eyebrow": "Systèmes dans le monde réel",
+      "title": "Industrie 4.0 chez Soufflet Malt",
+      "summary": "Déploiement de cas d’usage, tests fonctionnels, données industrielles, suivi de KPI et accompagnement de l’adoption.",
+      "status": "VERIFIED",
+      "proof_label": "Périmètre professionnel vérifié",
+      "theme": "INDUSTRY",
+      "claim_ids": [
+        "SAFE-003",
+        "SAFE-004"
+      ],
+      "order": 6
+    }
+  ],
+  "skills": [
+    {
+      "skill_id": "skill-ai-validation",
+      "label": "Structured AI output validation",
+      "level_label": "APPLIED",
+      "public_project_ids": [
+        "project-corrector-ai",
+        "project-elos"
+      ]
+    },
+    {
+      "skill_id": "skill-ci-cd",
+      "label": "CI/CD",
+      "level_label": "APPLIED",
+      "public_project_ids": [
+        "project-classeur",
+        "project-euloge-tv"
+      ],
+      "limitation": "Configuration presence does not prove successful workflow execution."
+    },
+    {
+      "skill_id": "skill-data-analysis",
+      "label": "Data analysis with Python and Pandas",
+      "level_label": "APPLIED",
+      "public_project_ids": [
+        "project-corrector-ai"
+      ]
+    },
+    {
+      "skill_id": "skill-docker",
+      "label": "Docker",
+      "level_label": "PRACTICED",
+      "public_project_ids": [
+        "project-corrector-ai",
+        "project-ipgeo"
+      ],
+      "limitation": "Configuration presence does not prove production container operation."
+    },
+    {
+      "skill_id": "skill-fastapi",
+      "label": "FastAPI",
+      "level_label": "REPEATEDLY_EVIDENCED",
+      "public_project_ids": [
+        "project-corrector-ai",
+        "project-ipgeo"
+      ]
+    },
+    {
+      "skill_id": "skill-industry40",
+      "label": "Industry 4.0 use-case deployment",
+      "level_label": "PRACTICED",
+      "public_project_ids": []
+    },
+    {
+      "skill_id": "skill-nextjs",
+      "label": "Next.js",
+      "level_label": "REPEATEDLY_EVIDENCED",
+      "public_project_ids": [
+        "project-elos",
+        "project-euloge-tv",
+        "project-manga-wave",
+        "project-professional-hub"
+      ]
+    },
+    {
+      "skill_id": "skill-postgresql-rls",
+      "label": "PostgreSQL Row Level Security",
+      "level_label": "APPLIED",
+      "public_project_ids": [
+        "project-professional-hub"
+      ]
+    },
+    {
+      "skill_id": "skill-powerbi",
+      "label": "Power BI",
+      "level_label": "EXPOSURE",
+      "public_project_ids": []
+    },
+    {
+      "skill_id": "skill-python",
+      "label": "Python",
+      "level_label": "REPEATEDLY_EVIDENCED",
+      "public_project_ids": [
+        "project-corrector-ai",
+        "project-ipgeo",
+        "project-mentor-evolution"
+      ]
+    },
+    {
+      "skill_id": "skill-react",
+      "label": "React",
+      "level_label": "REPEATEDLY_EVIDENCED",
+      "public_project_ids": [
+        "project-classeur",
+        "project-elos",
+        "project-mentor-evolution",
+        "project-professional-hub"
+      ]
+    },
+    {
+      "skill_id": "skill-sap",
+      "label": "SAP",
+      "level_label": "EXPOSURE",
+      "public_project_ids": []
+    },
+    {
+      "skill_id": "skill-security",
+      "label": "Secure application architecture",
+      "level_label": "APPLIED",
+      "public_project_ids": [
+        "project-corrector-ai",
+        "project-professional-hub"
+      ]
+    },
+    {
+      "skill_id": "skill-sql",
+      "label": "SQL / application persistence",
+      "level_label": "REPEATEDLY_EVIDENCED",
+      "public_project_ids": [
+        "project-corrector-ai",
+        "project-manga-wave",
+        "project-mentor-evolution",
+        "project-professional-hub"
+      ],
+      "limitation": "Application-level practice only; no DBA or production operations claim."
+    },
+    {
+      "skill_id": "skill-supabase",
+      "label": "Supabase",
+      "level_label": "APPLIED",
+      "public_project_ids": [
+        "project-manga-wave",
+        "project-professional-hub"
+      ]
+    },
+    {
+      "skill_id": "skill-testing",
+      "label": "Automated testing",
+      "level_label": "REPEATEDLY_EVIDENCED",
+      "public_project_ids": [
+        "project-classeur",
+        "project-corrector-ai",
+        "project-dex",
+        "project-ecv",
+        "project-elos",
+        "project-euloge-tv",
+        "project-ipgeo",
+        "project-manga-wave",
+        "project-mentor-evolution",
+        "project-professional-hub"
+      ],
+      "limitation": "Test suites are present; current aggregate pass state and a fixed total were not established."
+    },
+    {
+      "skill_id": "skill-typescript",
+      "label": "TypeScript",
+      "level_label": "REPEATEDLY_EVIDENCED",
+      "public_project_ids": [
+        "project-elos",
+        "project-professional-hub"
+      ]
+    }
+  ],
+  "featured_projects": [
+    {
+      "project_id": "project-elos",
+      "slug": "engineer-learning-os",
+      "title": "Engineer Learning OS",
+      "classification": "FEATURED",
+      "homepage_priority": "PRIMARY",
+      "order": 1,
+      "summary": "ELOS is a Next.js/React/TypeScript learning application with document-extraction adapters, evidence-based competency records and automated test suites present.",
+      "status": "ACTIVE",
+      "authorship": "CORROBORATED",
+      "technologies": [
+        "TypeScript",
+        "Next.js",
+        "React",
+        "PDF.js",
+        "Docling",
+        "Prisma"
+      ],
+      "capabilities": [
+        "document extraction adapters",
+        "evidence-oriented learning records",
+        "mission runtime",
+        "automated test suites"
+      ],
+      "limitations": [
+        "No fixed public test count",
+        "Current full-suite pass state not established"
+      ],
+      "repository_url": "https://github.com/eulogep/Engineer-Learning-OS",
+      "claim_ids": [
+        "SAFE-005"
+      ]
+    },
+    {
+      "project_id": "project-professional-hub",
+      "slug": "professional-hub",
+      "title": "Professional Hub",
+      "classification": "FEATURED",
+      "homepage_priority": "PRIMARY",
+      "order": 2,
+      "summary": "Professional Hub is a Next.js and TypeScript application using Supabase authentication and PostgreSQL Row Level Security, with test suites focused on user data isolation.",
+      "status": "ACTIVE",
+      "authorship": "CORROBORATED",
+      "technologies": [
+        "TypeScript",
+        "Next.js",
+        "React",
+        "Supabase",
+        "PostgreSQL",
+        "Playwright",
+        "Vitest"
+      ],
+      "capabilities": [
+        "authentication",
+        "row level security",
+        "owner isolation tests",
+        "object-storage integration"
+      ],
+      "limitations": [],
+      "repository_url": "https://github.com/eulogep/Projet-hub-administratif",
+      "claim_ids": [
+        "SAFE-006"
+      ]
+    },
+    {
+      "project_id": "project-corrector-ai",
+      "slug": "corrector-ai",
+      "title": "Corrector AI",
+      "classification": "FEATURED",
+      "homepage_priority": "PRIMARY",
+      "order": 3,
+      "summary": "Corrector AI is a Python project combining OCR, strictly validated structured AI outputs and multi-provider fallback, with monitoring configuration.",
+      "status": "ACTIVE",
+      "authorship": "CORROBORATED",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Pydantic",
+        "Docling",
+        "Redis",
+        "Docker",
+        "Prometheus",
+        "Grafana"
+      ],
+      "capabilities": [
+        "OCR",
+        "strict AI output validation",
+        "provider fallback",
+        "explicit provider failures",
+        "observability configuration"
+      ],
+      "limitations": [],
+      "repository_url": "https://github.com/eulogep/Corrector-ai",
+      "claim_ids": [
+        "SAFE-007"
+      ]
+    },
+    {
+      "project_id": "project-mentor-evolution",
+      "slug": "mentor-evolution",
+      "title": "Mentor Evolution",
+      "classification": "FEATURED",
+      "homepage_priority": "SECONDARY",
+      "order": 4,
+      "summary": "Mentor Evolution is a Python project implementing spaced-repetition scheduling with Py-FSRS, persistent card state and review logs, with dedicated scheduler tests.",
+      "status": "ACTIVE",
+      "authorship": "PARTIAL",
+      "technologies": [
+        "Python",
+        "Flask",
+        "React",
+        "Py-FSRS",
+        "SQLAlchemy",
+        "Alembic"
+      ],
+      "capabilities": [
+        "FSRS scheduling",
+        "persistent card state",
+        "review logs",
+        "database migrations",
+        "scheduler tests"
+      ],
+      "limitations": [
+        "Commit history includes multiple automated or assisted contributors"
+      ],
+      "repository_url": "https://github.com/eulogep/Mentorbotevolution",
+      "claim_ids": [
+        "SAFE-008"
+      ]
+    },
+    {
+      "project_id": "project-classeur",
+      "slug": "classeur-numerique-intelligent",
+      "title": "Classeur Numérique Intelligent",
+      "classification": "FEATURED",
+      "homepage_priority": "SECONDARY",
+      "order": 5,
+      "summary": "Classeur Numérique Intelligent is a local-first application using IndexedDB storage, legacy-data migration and recovery-oriented tests with CI workflows.",
+      "status": "ACTIVE",
+      "authorship": "CORROBORATED",
+      "technologies": [
+        "JavaScript",
+        "React",
+        "IndexedDB",
+        "Playwright",
+        "Vitest"
+      ],
+      "capabilities": [
+        "local-first storage",
+        "legacy-data migration",
+        "recovery-oriented tests",
+        "CI workflows"
+      ],
+      "limitations": [],
+      "repository_url": "https://github.com/eulogep/classeur-numerique-intelligent",
+      "claim_ids": [
+        "SAFE-009"
+      ]
+    },
+    {
+      "project_id": "project-ecv",
+      "slug": "ecv",
+      "title": "ECV",
+      "classification": "FEATURED",
+      "homepage_priority": "SECONDARY",
+      "order": 6,
+      "summary": "ECV is a TypeScript-based encrypted code-vault project with CLI, policy and maintenance modules and automated test suites present.",
+      "status": "ACTIVE",
+      "maturity": "IMPLEMENTED_WITH_TESTS",
+      "authorship": "VERIFIED",
+      "technologies": [
+        "TypeScript",
+        "Shell",
+        "Swift"
+      ],
+      "capabilities": [
+        "encrypted code-vault workflow",
+        "CLI and gateway architecture",
+        "policy and maintenance modules",
+        "automated test suites present"
+      ],
+      "limitations": [
+        "Static inspection only",
+        "Tests were not executed in the GitHub export audit",
+        "No CI or deployment verification",
+        "Security and cryptographic quality are not independently certified"
+      ],
+      "repository_url": "https://github.com/eulogep/ECV-Eulogep-Code-Vault",
+      "last_verified": "2026-09-26",
+      "claim_ids": [
+        "SAFE-013"
+      ]
+    },
+    {
+      "project_id": "project-manga-wave",
+      "slug": "manga-wave",
+      "title": "Manga Wave",
+      "classification": "FEATURED",
+      "homepage_priority": "SECONDARY",
+      "order": 7,
+      "summary": "Manga Wave is a full-stack catalogue and reading application demonstrating source abstraction, fallback logic, normalized metadata, persistence and automated test suites.",
+      "status": "ACTIVE",
+      "maturity": "IMPLEMENTED_WITH_TESTS",
+      "authorship": "VERIFIED",
+      "technologies": [
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Supabase",
+        "SQL",
+        "Playwright",
+        "Tailwind CSS"
+      ],
+      "capabilities": [
+        "source abstraction and adapters",
+        "availability and fallback logic",
+        "normalized metadata and persistence",
+        "content classification",
+        "automated test suites present"
+      ],
+      "limitations": [
+        "Static inspection only",
+        "Tests were not executed in the GitHub export audit",
+        "Deployment was not verified",
+        "External content and source licensing require cautious wording",
+        "Project-family relationships remain TO_VERIFY"
+      ],
+      "repository_url": "https://github.com/eulogep/manga-wave-bienvenue-fusion",
+      "last_verified": "2026-09-26",
+      "claim_ids": [
+        "SAFE-014"
+      ]
+    }
+  ],
+  "secondary_projects": [
+    {
+      "project_id": "project-facelens",
+      "slug": "facelens",
+      "title": "FaceLens",
+      "classification": "SECONDARY",
+      "homepage_priority": "NONE",
+      "order": 1,
+      "status": "EXPERIMENTAL",
+      "authorship": "TO_VERIFY",
+      "technologies": [],
+      "capabilities": [],
+      "limitations": [
+        "Local supporting artifacts exist, but the repository was not fully audited in this phase"
+      ],
+      "repository_url": "https://github.com/eulogep/FaceLens-Moteur-de-Recherche-Biom-trique-Local-Module-de-Scraping",
+      "claim_ids": []
+    },
+    {
+      "project_id": "project-ipgeo",
+      "slug": "ip-geolocation-app",
+      "title": "IP Geolocation App",
+      "classification": "SECONDARY",
+      "homepage_priority": "NONE",
+      "order": 2,
+      "status": "INACTIVE",
+      "authorship": "CORROBORATED",
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "NiceGUI",
+        "Leaflet",
+        "Docker"
+      ],
+      "capabilities": [
+        "REST API",
+        "external geolocation integration",
+        "interactive mapping",
+        "automated tests"
+      ],
+      "limitations": [],
+      "repository_url": "https://github.com/eulogep/IP-Geolocation-App",
+      "claim_ids": []
+    },
+    {
+      "project_id": "project-pdf-fingerprint",
+      "slug": "pdf-fingerprint-engine",
+      "title": "PDF Fingerprint Engine",
+      "classification": "SECONDARY",
+      "homepage_priority": "NONE",
+      "order": 3,
+      "status": "UNKNOWN",
+      "authorship": "TO_VERIFY",
+      "technologies": [],
+      "capabilities": [],
+      "limitations": [
+        "Repository content not fully audited in this phase"
+      ],
+      "repository_url": "https://github.com/eulogep/PDF-Fingerprint-Engine",
+      "claim_ids": []
+    },
+    {
+      "project_id": "project-euloge-tv",
+      "slug": "euloge-tv",
+      "title": "Euloge TV",
+      "classification": "SECONDARY",
+      "homepage_priority": "NONE",
+      "order": 4,
+      "status": "ACTIVE",
+      "maturity": "EVIDENCE_DENSE",
+      "authorship": "VERIFIED",
+      "technologies": [
+        "TypeScript",
+        "Next.js",
+        "React",
+        "Playwright",
+        "Vitest",
+        "IndexedDB",
+        "Tailwind CSS"
+      ],
+      "capabilities": [
+        "media catalogue architecture",
+        "source selection",
+        "local persistence",
+        "automated test suites present",
+        "CI configuration present"
+      ],
+      "limitations": [
+        "Tests and CI were not executed in the GitHub export audit",
+        "Deployment was not verified",
+        "Media-source licensing and availability require cautious wording",
+        "Project-family relationships remain TO_VERIFY"
+      ],
+      "repository_url": "https://github.com/eulogep/Euloge-tv",
+      "last_verified": "2026-09-26",
+      "claim_ids": []
+    },
+    {
+      "project_id": "project-dex",
+      "slug": "dex",
+      "title": "DEX",
+      "classification": "SECONDARY",
+      "homepage_priority": "NONE",
+      "order": 5,
+      "status": "ACTIVE",
+      "maturity": "IMPLEMENTED_WITH_TESTS",
+      "authorship": "PARTIAL",
+      "technologies": [
+        "JavaScript",
+        "React",
+        "Ethers",
+        "Tailwind CSS"
+      ],
+      "capabilities": [
+        "token-swap interface",
+        "wallet integration",
+        "deployment configuration present"
+      ],
+      "limitations": [
+        "Authorship is partial",
+        "Contribution scope requires qualified wording",
+        "Tests and deployment were not verified at runtime"
+      ],
+      "repository_url": "https://github.com/eulogep/dex-swap-app",
+      "last_verified": "2026-09-26",
+      "claim_ids": []
+    }
+  ],
+  "safe_claims": [
+    {
+      "claim_id": "SAFE-001",
+      "public_wording": "Euloge Mabiala is a developer whose inspected work spans software engineering, data and automation.",
+      "status": "CORROBORATED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-002",
+      "public_wording": "He is enrolled for 2026–2027 in the Licence Professionnelle Métiers des réseaux informatiques et télécommunications, parcours Réseaux et cybersécurité, at CY Cergy Paris Université / CY Tech, in work-study with Formasup.",
+      "status": "CORROBORATED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-003",
+      "public_wording": "His current work-study context at Soufflet Malt involves Industry 4.0 deployment, industrial data, functional testing, KPI follow-up and user adoption.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC_SUMMARY_ONLY",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-004",
+      "public_wording": "Since September 2026 he has been a work-study apprentice at Soufflet Malt (InVivo), working on Industry 4.0 use-case deployment.",
+      "status": "CORROBORATED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-005",
+      "public_wording": "ELOS is a Next.js/React/TypeScript learning application with document-extraction adapters, evidence-based competency records and automated test suites present.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-006",
+      "public_wording": "Professional Hub is a Next.js and TypeScript application using Supabase authentication and PostgreSQL Row Level Security, with test suites focused on user data isolation.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-007",
+      "public_wording": "Corrector AI is a Python project combining OCR, strictly validated structured AI outputs and multi-provider fallback, with monitoring configuration.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-008",
+      "public_wording": "Mentor Evolution is a Python project implementing spaced-repetition scheduling with Py-FSRS, persistent card state and review logs, with dedicated scheduler tests.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-009",
+      "public_wording": "Classeur Numérique Intelligent is a local-first application using IndexedDB storage, legacy-data migration and recovery-oriented tests with CI workflows.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-010",
+      "public_wording": "Maintenance is a contextual maintenance-management application, but the repository should be presented as inactive rather than current work.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-011",
+      "public_wording": "The inspected public project portfolio provides direct evidence of repeated TypeScript, React, Next.js, Python, application-level SQL and automated-testing practice, with applied Supabase and CI/CD configuration and practiced Docker usage.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-012",
+      "public_wording": "His GitHub account contained 61 public repositories at the audit date; this inventory includes forks and empty repositories and must not be presented as 61 original completed projects.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26"
+    },
+    {
+      "claim_id": "SAFE-013",
+      "public_wording": "ECV is a TypeScript-based encrypted code-vault project with CLI, policy and maintenance modules and automated test suites present.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26",
+      "limitations": [
+        "Static inspection only",
+        "Tests not executed in the GitHub export audit",
+        "No independent cryptographic security certification"
+      ]
+    },
+    {
+      "claim_id": "SAFE-014",
+      "public_wording": "Manga Wave is a full-stack catalogue and reading application demonstrating source abstraction, fallback logic, normalized metadata, persistence and automated test suites.",
+      "status": "VERIFIED",
+      "privacy_level": "PUBLIC",
+      "last_verified": "2026-09-26",
+      "limitations": [
+        "Static inspection only",
+        "Tests and deployment not runtime-verified",
+        "External content and source licensing require cautious wording"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "link-github",
+      "label": "GitHub",
+      "url": "https://github.com/eulogep",
+      "kind": "GITHUB",
+      "external": true
+    }
+  ],
+  "contact": {
+    "primary": "GITHUB",
+    "label": "Voir le profil GitHub",
+    "url": "https://github.com/eulogep"
+  },
+  "metadata": {
+    "site_name": "Euloge Mabiala — Portfolio",
+    "default_locale": "fr",
+    "future_locales": [
+      "en"
+    ],
+    "featured_project_count": 7,
+    "primary_featured_ids": [
+      "project-elos",
+      "project-professional-hub",
+      "project-corrector-ai"
+    ],
+    "canonical_sha256": "ca57765f8713bdc3340a4dba0ff7186ab4b5580731042ecffab174bcdaa536d1"
+  }
+}

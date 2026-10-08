@@ -1,0 +1,27 @@
+---
+interface Props {
+  class?: string;
+  priority?: boolean;
+}
+
+const { class: className, priority = false } = Astro.props;
+---
+
+<figure class:list={['profile-portrait', className]}>
+  <picture>
+    <source
+      type="image/avif"
+      srcset="/profile/euloge-mabiala-portrait-640.avif 640w"
+      sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 18rem, 14rem"
+    />
+    <img
+      src="/profile/euloge-mabiala-portrait-960.webp"
+      width="960"
+      height="960"
+      alt="Portrait d’Euloge Mabiala"
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : 'auto'}
+      decoding="async"
+    />
+  </picture>
+</figure>

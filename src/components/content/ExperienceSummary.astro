@@ -1,0 +1,22 @@
+---
+import { statusLabel } from '../../lib/page-models';
+import type { PublicPortfolioView } from '../../types/public-portfolio';
+
+interface Props {
+  experience: PublicPortfolioView['experience'][number];
+}
+
+const { experience } = Astro.props;
+---
+
+<article class="experience-card">
+  <p class="metadata"><time>{experience.period}</time> · {statusLabel(experience.status)}</p>
+  <h3>{experience.title}</h3>
+  <p class="organization">{experience.organization}</p>
+  {experience.organization === 'Soufflet Malt' && (
+    <a class="experience-brand" href="https://www.souffletmalt.com/fr/" target="_blank" rel="noreferrer" aria-label="Soufflet Malt — ouvrir le site officiel">
+      <img src="/institutions/soufflet-malt.png" width="604" height="99" alt="Soufflet Malt — Unleash the power of malt" loading="lazy" decoding="async" />
+    </a>
+  )}
+  <p>{experience.summary}</p>
+</article>

@@ -15,6 +15,7 @@
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white" />
   <img alt="Tests" src="https://img.shields.io/badge/tests-70%20checks-22C55E" />
   <img alt="Deployment" src="https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white" />
+  <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2563EB" />
 </p>
 
 An evidence-backed portfolio presenting software engineering, data, applied AI and Industry 4.0 work. It combines immersive project navigation with explicit authorship, validation and limitation boundaries.
@@ -117,3 +118,9 @@ The site is served as static assets through Cloudflare Workers. A custom canonic
 ## Author
 
 **Euloge Mabiala** — [github.com/eulogep](https://github.com/eulogep)
+
+## License
+
+The source code is available under the [MIT License](LICENSE). Personal,
+editorial and visual portfolio content is not covered by that license; see
+[NOTICE.md](NOTICE.md) for the full content and third-party asset boundary.
